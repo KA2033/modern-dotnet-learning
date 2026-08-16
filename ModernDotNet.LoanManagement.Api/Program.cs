@@ -1,5 +1,7 @@
 using ModernDotNet.LoanManagement.Api.Repositories;
 using ModernDotNet.LoanManagement.Api.Services;
+using Microsoft.EntityFrameworkCore;
+using ModernDotNet.LoanManagement.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,10 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddScoped<ILoanService, LoanService>();
 builder.Services.AddScoped<ILoanRepository, LoanRepository>();
+
+builder.Services.AddDbContext<LoanDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("LoanDb")));
 
 var app = builder.Build();
 
