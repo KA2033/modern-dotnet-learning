@@ -1,4 +1,4 @@
-﻿namespace ModernDotNet.LoanManagement.Api.Entities
+﻿namespace ModernDotNet.LoanManagement.Domain.Entities
 {
     public class Loan
     {

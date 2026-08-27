@@ -1,6 +1,6 @@
-﻿using ModernDotNet.LoanManagement.Api.Models;
+﻿using ModernDotNet.LoanManagement.Application.Models;
 
-namespace ModernDotNet.LoanManagement.Api.Repositories
+namespace ModernDotNet.LoanManagement.Application.Repositories
 {
     public interface ILoanRepository
     {   

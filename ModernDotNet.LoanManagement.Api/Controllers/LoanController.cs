@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ModernDotNet.LoanManagement.Api.Services;
+using ModernDotNet.LoanManagement.Application.Services;
 
 namespace ModernDotNet.LoanManagement.Api.Controllers
 {

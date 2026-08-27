@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ModernDotNet.LoanManagement.Api.Entities;
+using ModernDotNet.LoanManagement.Domain.Entities;
 
-namespace ModernDotNet.LoanManagement.Api.Data
+namespace ModernDotNet.LoanManagement.Infrastructure.Data
 {
     public class LoanDbContext: DbContext
     {

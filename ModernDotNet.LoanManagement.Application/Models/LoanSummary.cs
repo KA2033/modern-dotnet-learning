@@ -1,4 +1,4 @@
-﻿namespace ModernDotNet.LoanManagement.Api.Models;
+﻿namespace ModernDotNet.LoanManagement.Application.Models;
 
 public record LoanSummary(
     int LoanId,

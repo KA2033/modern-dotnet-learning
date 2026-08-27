@@ -1,8 +1,9 @@
-﻿using ModernDotNet.LoanManagement.Api.Models;
-using ModernDotNet.LoanManagement.Api.Data;
+﻿using ModernDotNet.LoanManagement.Application.Models;
+using ModernDotNet.LoanManagement.Infrastructure.Data;
+using ModernDotNet.LoanManagement.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace ModernDotNet.LoanManagement.Api.Repositories
+namespace ModernDotNet.LoanManagement.Infrastructure.Repositories
 {
     public class LoanRepository : ILoanRepository
     {

@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="ModernDotNet.LoanManagement.Api/ModernDotNet.LoanManagement.Api.csproj" />
+  <Project Path="ModernDotNet.LoanManagement.Application/ModernDotNet.LoanManagement.Application.csproj" Id="09ba56d9-550d-4de7-9ab1-bb03f841617d" />
+  <Project Path="ModernDotNet.LoanManagement.Domain/ModernDotNet.LoanManagement.Domain.csproj" Id="3b5338b2-f488-4693-95b3-87ddded4512a" />
+  <Project Path="ModernDotNet.LoanManagement.Infrastructure/ModernDotNet.LoanManagement.Infrastructure.csproj" Id="bd134024-f578-46e9-9b33-336b31ee6430" />
 </Solution>

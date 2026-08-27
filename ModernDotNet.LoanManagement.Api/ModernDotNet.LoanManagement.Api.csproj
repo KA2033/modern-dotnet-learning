@@ -15,4 +15,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ModernDotNet.LoanManagement.Application\ModernDotNet.LoanManagement.Application.csproj" />
+    <ProjectReference Include="..\ModernDotNet.LoanManagement.Infrastructure\ModernDotNet.LoanManagement.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

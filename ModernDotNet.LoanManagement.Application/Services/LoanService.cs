@@ -1,7 +1,7 @@
-﻿using ModernDotNet.LoanManagement.Api.Models;
-using ModernDotNet.LoanManagement.Api.Repositories;
+﻿using ModernDotNet.LoanManagement.Application.Models;
+using ModernDotNet.LoanManagement.Application.Repositories;
 
-namespace ModernDotNet.LoanManagement.Api.Services
+namespace ModernDotNet.LoanManagement.Application.Services
 {
     public class LoanService : ILoanService
     {
