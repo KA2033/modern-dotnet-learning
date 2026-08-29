@@ -15,7 +15,9 @@ namespace ModernDotNet.LoanManagement.Infrastructure.DependencyInjection
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddDbContext<LoanDbContext>(options =>options.UseSqlServer(
-            configuration.GetConnectionString("LoanDb")));
+            configuration.GetConnectionString("LoanDb"),sqlOptions  => sqlOptions.MigrationsAssembly("ModernDotNet.LoanManagement.Api")          
+            )
+            );
 
             services.AddScoped<ILoanRepository, LoanRepository>();
             return services;
