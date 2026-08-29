@@ -1,5 +1,6 @@
 ﻿using ModernDotNet.LoanManagement.Application.Models;
 using ModernDotNet.LoanManagement.Infrastructure.Data;
+using ModernDotNet.LoanManagement.Domain.Entities;
 using ModernDotNet.LoanManagement.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ namespace ModernDotNet.LoanManagement.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<LoanSummary?> GetLoanSummaryAsync(int loanId, CancellationToken cancellationToken)
+        public async Task<Loan?> GetByIdAsync(int loanId, CancellationToken cancellationToken)
         {
             //var loanSummary = new LoanSummary(
             //                   loanId,
@@ -27,7 +28,15 @@ namespace ModernDotNet.LoanManagement.Infrastructure.Repositories
             {
                 return null;
             }
-            return new LoanSummary(loan.LoanId, loan.CustomerName, loan.OutstandingAmount, loan.TotalPaid);
+            //return new LoanSummary(loan.LoanId, loan.CustomerName, loan.OutstandingAmount, loan.TotalPaid);
+            return loan;
+        }
+
+        public async Task<Loan> AddAsync(Loan loan, CancellationToken cancellationToken)
+        {
+            await _context.Loans.AddAsync(loan, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+            return loan;
         }
     }
 }
