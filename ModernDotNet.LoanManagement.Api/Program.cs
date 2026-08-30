@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ModernDotNet.LoanManagement.Infrastructure.Data;
 using ModernDotNet.LoanManagement.Application.DependencyInjection;
 using ModernDotNet.LoanManagement.Infrastructure.DependencyInjection;
+using ModernDotNet.LoanManagement.Api.ExceptionHandling;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +24,12 @@ builder.Services.AddDbContext<LoanDbContext>(options =>
 builder.Services.AddApplication();
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 
 var app = builder.Build();
-
+app.UseExceptionHandler();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

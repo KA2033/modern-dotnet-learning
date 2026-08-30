@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
 
-namespace ModernDotNet.LoanManagement.Application.DTOs
+namespace ModernDotNet.LoanManagement.Application.DTOs;
+
+public class CreateLoanRequestDto
 {
-    public class CreateLoanRequestDto
-    {
-        public string CustomerName { get; set; } = string.Empty;
+    [Required]
+    [StringLength(100)]
+    public string CustomerName { get; set; } = string.Empty;
 
-        public decimal PrincipalAmount { get; set; }
+    [Range(typeof(decimal), "0.01", "9999999999.99")]
+    public decimal PrincipalAmount { get; set; }
 
-        public decimal InterestRate { get; set; }
-    }
+    [Range(typeof(decimal), "0", "100")]
+    public decimal InterestRate { get; set; }
 }
