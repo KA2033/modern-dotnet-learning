@@ -14,6 +14,12 @@ namespace ModernDotNet.LoanManagement.Api.Controllers
         {
             _loanService = loanService;
         }
+
+        //[HttpGet("test-error")]
+        //public IActionResult TestError()
+        //{
+        //    throw new ArgumentException("This is a test domain validation error.");
+        //}
         [HttpGet("{loanId}", Name = "GetLoan")]
         public async Task<IActionResult> GetLoanAsync(int loanId, CancellationToken cancellationToken)
         {
