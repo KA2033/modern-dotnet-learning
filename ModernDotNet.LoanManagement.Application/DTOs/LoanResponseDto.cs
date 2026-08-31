@@ -7,6 +7,7 @@ namespace ModernDotNet.LoanManagement.Application.DTOs
     public record LoanResponseDto(
     int LoanId,
     string CustomerName,
+    decimal InterestRate,
     decimal OutstandingAmount,
     decimal TotalPaid);
 }

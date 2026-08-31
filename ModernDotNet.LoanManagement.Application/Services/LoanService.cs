@@ -20,14 +20,26 @@ namespace ModernDotNet.LoanManagement.Application.Services
             {
                 return null;
             }
-            return new LoanResponseDto(loan.LoanId, loan.CustomerName, loan.OutstandingAmount, loan.TotalPaid);
+            return new LoanResponseDto(loan.LoanId, loan.CustomerName,loan.InterestRate, loan.OutstandingAmount, loan.TotalPaid);
         }
         public async Task<LoanResponseDto> CreateLoanAsync(CreateLoanRequestDto request,CancellationToken cancellationToken)
         {
             var loan = Loan.Create(request.CustomerName, request.PrincipalAmount, request.InterestRate);
             
             var savedLoan = await _repository.AddAsync(loan,cancellationToken);
-            return new LoanResponseDto(savedLoan.LoanId, savedLoan.CustomerName, savedLoan.OutstandingAmount, savedLoan.TotalPaid);
+            return new LoanResponseDto(savedLoan.LoanId, savedLoan.CustomerName,savedLoan.InterestRate, savedLoan.OutstandingAmount, savedLoan.TotalPaid);
+        }
+
+        public async Task<LoanResponseDto?> UpdateLoanAsync(int loanId,UpdateLoanRequestDto request, CancellationToken cancellationToken)
+        {
+            var loan = await _repository.GetByIdAsync(loanId, cancellationToken);
+            if (loan == null)
+            {
+                return null;
+            }
+            loan.UpdateDetails(request.CustomerName,request.InterestRate);
+            var savedLoan = await _repository.UpdateAsync(loan, cancellationToken);
+            return new LoanResponseDto(savedLoan.LoanId, savedLoan.CustomerName,savedLoan.InterestRate, savedLoan.OutstandingAmount, savedLoan.TotalPaid);
         }
     }
 }

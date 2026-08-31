@@ -41,5 +41,15 @@ namespace ModernDotNet.LoanManagement.Api.Controllers
             return CreatedAtRoute("GetLoan", new { loanId = loan.LoanId },
         loan);
         }
+
+
+        [HttpPut("{loanId}")]
+        public async Task<ActionResult<LoanResponseDto>> UpdateLoan(int loanId,UpdateLoanRequestDto request, CancellationToken cancellationToken)
+        {
+            var loan = await _loanService.UpdateLoanAsync(loanId,request, cancellationToken);
+
+            //return CreatedAtRoute("GetLoan", new { loanId = loan.LoanId },loan);
+            return Ok(loan);
+        }
     }
 }

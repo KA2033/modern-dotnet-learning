@@ -38,5 +38,11 @@ namespace ModernDotNet.LoanManagement.Infrastructure.Repositories
             await _context.SaveChangesAsync(cancellationToken);
             return loan;
         }
+        public async Task<Loan> UpdateAsync(Loan loan, CancellationToken cancellationToken)
+        {
+             _context.Loans.Update(loan);
+            await _context.SaveChangesAsync(cancellationToken);
+            return loan;
+        }
     }
 }
