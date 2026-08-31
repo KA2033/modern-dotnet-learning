@@ -39,5 +39,25 @@
                 TotalPaid = 0
             };
         }
+
+        public void UpdateDetails(string customerName,decimal interestRate)
+        {
+            if (string.IsNullOrWhiteSpace(customerName))
+            {
+                throw new ArgumentException(
+                    "Customer name is required.",
+                    nameof(customerName));
+            }
+
+            if (interestRate < 0 || interestRate > 100)
+            {
+                throw new ArgumentException(
+                    "Interest rate must be between 0 and 100.",
+                    nameof(interestRate));
+            }
+
+            CustomerName = customerName;
+            InterestRate = interestRate;
+        }
     }
 }

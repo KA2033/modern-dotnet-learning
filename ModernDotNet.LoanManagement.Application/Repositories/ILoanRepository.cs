@@ -10,5 +10,6 @@ namespace ModernDotNet.LoanManagement.Application.Repositories
         CancellationToken cancellationToken);
 
         Task<Loan> AddAsync(Loan loan, CancellationToken cancellationToken);
+        Task<Loan> UpdateAsync(Loan loan, CancellationToken cancellationToken);
     }
 }
