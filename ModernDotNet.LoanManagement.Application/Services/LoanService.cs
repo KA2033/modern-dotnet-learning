@@ -41,5 +41,17 @@ namespace ModernDotNet.LoanManagement.Application.Services
             var savedLoan = await _repository.UpdateAsync(loan, cancellationToken);
             return new LoanResponseDto(savedLoan.LoanId, savedLoan.CustomerName,savedLoan.InterestRate, savedLoan.OutstandingAmount, savedLoan.TotalPaid);
         }
+
+        public async Task<LoanResponseDto?> MakePaymentAsync( int loanId,MakePaymentRequestDto request,CancellationToken cancellationToken)
+        {
+            var loan = await _repository.GetByIdAsync(loanId, cancellationToken);
+            if (loan == null)
+            {
+                return null;
+            }
+            loan.MakePayment(request.PaymentAmount);
+            var savedLoan = await _repository.UpdateAsync(loan, cancellationToken);
+            return new LoanResponseDto(savedLoan.LoanId, savedLoan.CustomerName,savedLoan.InterestRate, savedLoan.OutstandingAmount, savedLoan.TotalPaid);
+        }
     }
 }
