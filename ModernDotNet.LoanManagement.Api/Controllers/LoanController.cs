@@ -51,5 +51,13 @@ namespace ModernDotNet.LoanManagement.Api.Controllers
             //return CreatedAtRoute("GetLoan", new { loanId = loan.LoanId },loan);
             return Ok(loan);
         }
+        [HttpPut("{loanId}/payment")]
+        public async Task<ActionResult<LoanResponseDto>> MakePayment(int loanId, MakePaymentRequestDto request, CancellationToken cancellationToken)
+        {
+            var loan = await _loanService.MakePaymentAsync(loanId, request, cancellationToken);
+            // return CreatedAtAction(nameof(GetLoanAsync),new {loanId = loan.LoanId }, loan);
+            //return StatusCode(StatusCodes.Status201Created, loan);
+            return Ok(loan);
+        }
     }
 }

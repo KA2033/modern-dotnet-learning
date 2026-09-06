@@ -14,5 +14,9 @@ namespace ModernDotNet.LoanManagement.Application.Services
         CancellationToken cancellationToken);
 
         Task<LoanResponseDto?> UpdateLoanAsync(int loanId, UpdateLoanRequestDto request, CancellationToken cancellationToken);
+        Task<LoanResponseDto?> MakePaymentAsync(
+    int loanId,
+    MakePaymentRequestDto request,
+    CancellationToken cancellationToken);
     }
 }

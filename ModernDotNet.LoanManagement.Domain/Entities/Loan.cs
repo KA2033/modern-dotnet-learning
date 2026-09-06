@@ -49,7 +49,7 @@
                     nameof(customerName));
             }
 
-            if (interestRate < 0 || interestRate > 100)
+            if (interestRate <= 0 || interestRate > 100)
             {
                 throw new ArgumentException(
                     "Interest rate must be between 0 and 100.",
@@ -58,6 +58,19 @@
 
             CustomerName = customerName;
             InterestRate = interestRate;
+        }
+
+        public void MakePayment(decimal amount)
+        {
+            if (amount < 0 || amount > OutstandingAmount)
+            {
+                throw new ArgumentException(
+                    "Invalid Payment amount",
+                    nameof(amount));
+            }
+
+            OutstandingAmount -= amount;
+            TotalPaid += amount;
         }
     }
 }
